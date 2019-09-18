@@ -24,8 +24,6 @@ namespace RazorPagesMovie.Pages.Movies
         {
             if (id == null)
             {
-                
-            @ServerInfo.GetHtml();
                 return NotFound();
             }
 
