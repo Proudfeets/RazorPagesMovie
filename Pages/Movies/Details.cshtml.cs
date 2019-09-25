@@ -19,9 +19,10 @@ namespace RazorPagesMovie.Pages.Movies
         }
 
         public Movie Movie { get; set; }
-
+// asynchronous function because it's calling on other pages to complete their actions
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+          // makes sure the movie exists and hasn't been deleted by another user
             if (id == null)
             {
                 return NotFound();

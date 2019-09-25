@@ -12,6 +12,7 @@ namespace RazorPagesMovie.Pages.Movies
 {
     public class EditModel : PageModel
     {
+      // Pull in the db from RazorPagesMovieContext
         private readonly RazorPagesMovie.Models.RazorPagesMovieContext _context;
 
         public EditModel(RazorPagesMovie.Models.RazorPagesMovieContext context)
@@ -24,6 +25,7 @@ namespace RazorPagesMovie.Pages.Movies
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+          // making sure the selected movie exists
             if (id == null)
             {
                 return NotFound();
@@ -51,6 +53,7 @@ namespace RazorPagesMovie.Pages.Movies
             {
                 await _context.SaveChangesAsync();
             }
+            //this handles if a movie has been deleted by one client while being edited by another
             catch (DbUpdateConcurrencyException)
             {
                 if (!MovieExists(Movie.ID))
@@ -62,7 +65,7 @@ namespace RazorPagesMovie.Pages.Movies
                     throw;
                 }
             }
-
+            //if no errors, return to the list 
             return RedirectToPage("./Index");
         }
 
