@@ -51,6 +51,7 @@ namespace RazorPagesMovie.Pages.Movies
             {
                 await _context.SaveChangesAsync();
             }
+            // checks if movie has been deleted by another user while user was on page
             catch (DbUpdateConcurrencyException)
             {
                 if (!MovieExists(Movie.ID))
