@@ -1,4 +1,4 @@
-@page "{id:int?}"
+@page "{searchString?}"
 @model RazorPagesMovie.Pages.Movies.IndexModel
 
 @{
@@ -10,6 +10,14 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +53,7 @@
             </td>
             <td>
                 <!-- The 3 lines below this are Anchor Tag Helpers -->
-                <a asp-page="./Edit" asp-route-id="@item.ID">Change</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Erase</a>
             </td>
