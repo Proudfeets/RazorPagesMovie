@@ -47,6 +47,7 @@ namespace RazorPagesMovie.Pages.Movies
             Movie = await _context.Movie.FindAsync(id);
 
             if (Movie != null)
+            // reaches back to RazorPagesMovieContext to delete Movie from the db
             {
                 _context.Movie.Remove(Movie);
                 await _context.SaveChangesAsync();
