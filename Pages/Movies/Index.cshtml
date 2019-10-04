@@ -10,15 +10,19 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-
+<!-- search bar -->
 <form>
     <p>
+        <select asp-for="MovieGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>
         Title: <input type="text" asp-for="SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>
-
+<!-- movie display -->
 <table class="table">
+    <!-- column headers -->
     <thead>
         <tr>
             <th>
@@ -36,6 +40,7 @@
             <th></th>
         </tr>
     </thead>
+     <!-- individual movies -->
     <tbody>
 @foreach (var item in Model.Movie) {
         <tr>
@@ -53,9 +58,9 @@
             </td>
             <td>
                 <!-- The 3 lines below this are Anchor Tag Helpers -->
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Erase</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID"> Edit </a> |
+                <a asp-page="./Details" asp-route-id="@item.ID"> Details </a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID"> Erase </a>
             </td>
         </tr>
 }
