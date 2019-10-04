@@ -10,15 +10,19 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-
+<!-- search bar -->
 <form>
     <p>
+        <select asp-for="MovieGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>
         Title: <input type="text" asp-for="SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>
-
+<!-- movie display -->
 <table class="table">
+    <!-- column headers -->
     <thead>
         <tr>
             <th>
@@ -36,6 +40,7 @@
             <th></th>
         </tr>
     </thead>
+     <!-- individual movies -->
     <tbody>
 @foreach (var item in Model.Movie) {
         <tr>

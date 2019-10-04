@@ -23,7 +23,7 @@ namespace RazorPagesMovie.Pages.Movies
         // For security, SupportsGet property is required for GET requests.  For more info: https://www.youtube.com/watch?v=p7iHB9V-KVU&feature=youtu.be&t=54m27s
         [BindProperty(SupportsGet = true)]
       //SearchString is the text that users enter to the search box
-    //   the BindProperty attribute forms values and query strings with the same name as the Property
+    //BindProperty attribute forms values and query strings with the same name as the Property
       public string SearchString { get; set; }
       // Requires using Microsoft.AspNetCore.Mvc.Rendering;
       public SelectList Genres { get; set; }
@@ -52,8 +52,8 @@ namespace RazorPagesMovie.Pages.Movies
           {
               movies = movies.Where(x => x.Genre == MovieGenre);
           }
+        //   projects the genres searched in linq query
           Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
-        //   ends the async and runs the 
           Movie = await movies.ToListAsync();
         }
     }
